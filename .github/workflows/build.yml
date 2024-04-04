@@ -6,12 +6,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Force (re)Generate Tailwind CSS
-        uses: pyyjac/tailwindcss-update@v0.0.5
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: update tailwindcss
+        uses: ZoeyVid/tailwindcss-update@main
         with:
-          output: ./dist/output.css
-      - name: Upload Generated CSS File
-        uses: actions/upload-pages-artifact@v2
+          input: src/input.css
+          output: dist/output.css
+          params: "--minify"
+          
+      - name: push changes
+        run: |
+          git config user.name "GitHub"
+          git config user.email "noreply@github.com"
+          git diff-index --quiet HEAD || git commit -sm "tailwindcss-update"
+          git push
   deploy:
     environment:
       name: github-pages

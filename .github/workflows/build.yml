@@ -9,6 +9,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Modify Permissions
+        run: chmod +w ./dist
+
       - name: Install dependencies
         run: npm install
 

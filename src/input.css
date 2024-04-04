@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Nemesis Grant';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Nemesis Grant'), url('dist/font.ttf') format('truetype');
+  }
+
+.cf {
+    font-family: 'Nemesis Grant';
+}
+
+@media (max-width: 1050px) {
+    #navBarToggle {
+        display: block;
+    }
+
+    #navBarContent {
+        display: none;
+    }
+
+    #navBarSubmenu {
+        display: none;
+    }
+}
+
+@media (max-width: 1500px) {
+    #articleContent {
+        max-width: 60%;
+    }
+}
+
+@media (max-width: 1200px) {
+    #articleContent {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 800px) {
+    #navBarSubmenu {
+        display: none;
+    }
+
+    #articleContent {
+        max-width: 100%;
+    }
+}
+
+h1 {
+    @apply text-3xl font-semibold;
+}

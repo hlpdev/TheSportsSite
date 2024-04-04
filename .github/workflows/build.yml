@@ -31,17 +31,3 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git commit -a -m "Update output.css"
           git push
-  deploy:
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{steps.deployment.outputs.page_url}}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages
-        

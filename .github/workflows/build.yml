@@ -6,11 +6,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate Tailwind CSS
-        uses: ZoeyVid/tailwindcss-update@v1.4.0
+      - name: Force (re)Generate Tailwind CSS
+        uses: pyyjac/tailwindcss-update@v0.0.5
         with:
-          input: ./src/input.css
-          output: ./dist//output.css
+          output: ./dist/output.css
       - name: Upload Generated CSS File
         uses: actions/upload-pages-artifact@v2
   deploy:

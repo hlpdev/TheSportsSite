@@ -9,8 +9,8 @@ jobs:
       - name: Generate Tailwind CSS
         uses: ZoeyVid/tailwindcss-update@v1.4.0
         with:
-          input: src/input.css
-          output: dist/output.css
+          input: ./src/input.css
+          output: ./dist//output.css
       - name: Upload Generated CSS File
         uses: actions/upload-pages-artifact@v2
   deploy:

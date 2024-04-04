@@ -6,21 +6,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: update tailwindcss
-        uses: ZoeyVid/tailwindcss-update@main
-        with:
-          input: src/input.css
-          output: dist/output.css
-          params: "--minify"
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Tailwind CSS
+        run: npx tailwindcss -i ./src/input.css -o ./dist/output.css
           
-      - name: push changes
+      - name: Commit & Push Changes
         run: |
-          git config user.name "GitHub"
-          git config user.email "noreply@github.com"
-          git diff-index --quiet HEAD || git commit -sm "tailwindcss-update"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add ./dist/output.css
+          git commit -m "Update output.css"
           git push
   deploy:
     environment:

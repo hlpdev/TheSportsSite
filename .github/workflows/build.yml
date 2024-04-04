@@ -39,6 +39,9 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
       - name: Deploy to GitHub Pages
         # You may pin to the exact commit or the version.
         # uses: JamesIves/github-pages-deploy-action@65b5dfd4f5bcd3a7403bbc2959c144256167464e
